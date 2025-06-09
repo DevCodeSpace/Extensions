@@ -335,13 +335,3 @@ string symbolPassword = symbolBuilder.Generate();
 ![Plugin Banners](https://raw.githubusercontent.com/DevCodeSpace/Extensions/refs/heads/main/assets/contributors.png)
 
 ⭐ **Star this repository if Extensions helped your project!**
-
----
-
-<div align="center">
-  <p>Made with DevCodeSpace ❤️</p>
-  <p>
-    <a href="https://github.com/DevCodeSpace/Extensions">GitHub Repository</a> •
-    <a href="https://github.com/DevCodeSpace/Extensions/issues">Report Bug</a>
-  </p>
-</div>
