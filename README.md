@@ -1,20 +1,25 @@
-# Utills-Nuget
+# Extensions
 
-<img src="./Images/preview.png" alt="Utills-Nuget Cover Image" width="600" height="150">
+**Extensions** is your comprehensive toolkit for .NET development, offering a rich collection of extension methods and utility functions designed to streamline your coding experience. Whether you're manipulating strings, working with dates, generating secure passwords, or handling Web3 operations, Utills-Nuget provides the tools you need to write cleaner, more efficient code.
 
-[![NuGet Version](https://img.shields.io/nuget/v/Utills)](https://www.nuget.org/packages/Utills)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/Utills)](https://www.nuget.org/packages/Utills)
+![Plugin Banners](https://raw.githubusercontent.com/DevCodeSpace/.NetSocketHandler/refs/heads/main/assets/banner.jpg)
 
-## Description
+## ✨ Key Features
 
-Utills-Nuget is your go-to toolkit for .NET development, offering a rich set of extension methods and utility functions designed to streamline your coding experience. Whether you're manipulating strings, working with dates, or generating secure passwords, Utills-Nuget provides the tools you need to write cleaner, more efficient code. Dive in and discover how Utills-Nuget can simplify your .NET projects!
+◆ 🎨 **Color manipulation and conversion utilities** <br>
+◆ 📅 **Advanced date comparison and validation** <br>
+◆ 📁 **File operations with async support** <br>
+◆ 🔢 **Extended integer and numeric operations** <br>
+◆ 📝 **Comprehensive string validation and manipulation** <br>
+◆ 🌐 **Web3 utilities for blockchain development** <br>
+◆ 🗄️ **Database connection and export utilities** <br>
+◆ 🔐 **Secure password generation with customizable options**
 
 ## Table of Contents
 
-- [Description](#description)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Utilities](#utilities)
+- [Quick Start](#quick-start)
+- [API Reference](#api-reference)
   - [ColorExtensions](#colorextensions)
   - [DateComparisonExtensions](#datecomparisonextensions)
   - [FileExtensions](#fileextensions)
@@ -22,205 +27,321 @@ Utills-Nuget is your go-to toolkit for .NET development, offering a rich set of 
   - [NumExtension](#numextension)
   - [StringExtensions](#stringextensions)
   - [Web3Utils](#web3utils)
+  - [DbService](#dbservice)
+  - [Password Generation](#password-generation)
+- [Requirements](#requirements)
 - [Contributing](#contributing)
 - [License](#license)
+- [Changelog](#changelog)
 
 ## Installation
 
-You can install Utills-Nuget via NuGet Package Manager:
-
+### Package Manager Console
 ```powershell
 Install-Package Utills
 ```
 
-Or via the .NET CLI:
-
+### .NET CLI
 ```bash
 dotnet add package Utills
 ```
 
-## Usage
+### PackageReference
+```xml
+<PackageReference Include="Utills" Version="x.x.x" />
+```
 
-Once installed, you can use the extension methods and utility functions in your .NET project by importing the `Utills` namespace:
+## Quick Start
+
+Once installed, import the `Utills` namespace to access all extension methods and utilities:
 
 ```csharp
 using Utills;
+
+// Example: String validation
+string email = "user@example.com";
+bool isValid = email.IsValidEmail(); // Returns true
+
+// Example: Date operations
+DateTime today = DateTime.Now;
+bool isToday = today.IsToday(); // Returns true
+
+// Example: Number operations
+int number = 42;
+bool isEven = number.IsEven(); // Returns true
 ```
 
-## Utilities
+## API Reference
 
 ### ColorExtensions
 
-Provides extension methods for working with colors, allowing you to manipulate and convert colors easily.
+Work with colors effortlessly using these extension methods for color manipulation and conversion.
+
+#### Methods
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `ToHex()` | Convert color to hexadecimal | `Color.Red.ToHex()` → `"#FFFF0000"` |
+| `Shade(int value)` | Create darker shade | `Color.Blue.Shade(200)` |
+| `IsLight()` | Check if color is light | `Color.Yellow.IsLight()` → `true` |
+| `TweenTo(Color, double)` | Interpolate between colors | `Color.Red.TweenTo(Color.Blue, 0.5)` |
 
 ```csharp
-// Example 1: Convert a color to its hexadecimal representation
-string hexColor = Color.Red.ToHex(); // Returns "#FFFF0000"
+// Convert a color to its hexadecimal representation
+string hexColor = Color.Red.ToHex(); // "#FFFF0000"
 
-// Example 2: Shade a color
-Color shadedColor = Color.Blue.Shade(200); // Returns a darker shade of blue
+// Create a darker shade of blue
+Color shadedColor = Color.Blue.Shade(200); 
 
-// Example 3: Check if a color is light
-bool isLight = Color.Yellow.IsLight(); // Returns true
+// Check if a color is light
+bool isLight = Color.Yellow.IsLight(); // true
 
-// Example 4: Tween between two colors
-Color startColor = Color.Red;
-Color endColor = Color.Blue;
-Color tweenColor = startColor.TweenTo(endColor, 0.5); // Returns a color halfway between red and blue
+// Interpolate between two colors
+Color tweenColor = Color.Red.TweenTo(Color.Blue, 0.5);
 ```
 
 ### DateComparisonExtensions
 
-Provides extension methods for comparing dates, making it easier to perform common date-related checks and manipulations.
+Simplify date comparisons and manipulations with these convenient extension methods.
+
+#### Methods
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `IsBetween(DateTime, DateTime)` | Check if date is within range | `date.IsBetween(start, end)` |
+| `IsToday()` | Check if date is today | `DateTime.Now.IsToday()` |
+| `DateOnly()` | Get date without time | `DateTime.Now.DateOnly()` |
+| `IsPast()` | Check if date is in the past | `someDate.IsPast()` |
 
 ```csharp
-// Example 1: Check if a date is within a specified range
 DateTime date = DateTime.Now;
 DateTime startDate = DateTime.Now.AddDays(-1);
 DateTime endDate = DateTime.Now.AddDays(1);
-bool isInRange = date.IsBetween(startDate, endDate); // Returns true
 
-// Example 2: Check if a date is today
-bool isToday = DateTime.Now.IsToday(); // Returns true
+// Check if date is within range
+bool isInRange = date.IsBetween(startDate, endDate); // true
 
-// Example 3: Get the date only part of a DateTime
-DateTime dateOnly = DateTime.Now.DateOnly(); // Returns DateTime.Now with the time set to 00:00:00
+// Check if date is today
+bool isToday = DateTime.Now.IsToday(); // true
 
-// Example 4: Check if a date is in the past
-bool isPast = DateTime.Now.AddDays(-1).IsPast(); // Returns true
+// Get date only (time set to 00:00:00)
+DateTime dateOnly = DateTime.Now.DateOnly();
+
+// Check if date is in the past
+bool isPast = DateTime.Now.AddDays(-1).IsPast(); // true
 ```
 
 ### FileExtensions
 
-Provides extension methods for working with files, providing functionalities such as copying, clearing, and monitoring file changes.
+Handle file operations with ease using these asynchronous file extension methods.
+
+#### Methods
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `GetMimeType()` | Get file MIME type | `"file.txt".GetMimeType()` |
+| `ClearAsync()` | Clear file content | `await file.ClearAsync()` |
+| `AppendStringAsync(string)` | Append text to file | `await file.AppendStringAsync(text)` |
 
 ```csharp
-// Example 1: Get the MIME type of a file
-string mimeType = "example.txt".GetMimeType(); // Returns "text/plain"
+// Get MIME type of a file
+string mimeType = "example.txt".GetMimeType(); // "text/plain"
 
-// Example 2: Clear a file's content asynchronously
+// Clear file content asynchronously
 FileInfo file = new FileInfo("example.txt");
 await file.ClearAsync();
 
-// Example 3: Append text to a file asynchronously
+// Append text to file asynchronously
 await file.AppendStringAsync("This is some text to append.");
 ```
 
 ### IntExtension
 
-Provides extension methods for working with integers, offering functionalities such as checking divisibility, generating ranges, and converting to time spans.
+Extend integer functionality with mathematical operations and conversions.
+
+#### Methods
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `IsEven()` | Check if number is even | `4.IsEven()` → `true` |
+| `Seconds()` | Convert to TimeSpan seconds | `10.Seconds()` |
+| `RangeTo(int)` | Generate integer range | `1.RangeTo(5)` |
+| `Digits()` | Get individual digits | `12345.Digits()` |
 
 ```csharp
-// Example 1: Check if an integer is even
-int number = 4;
-bool isEven = number.IsEven(); // Returns true
+// Check if integer is even
+bool isEven = 4.IsEven(); // true
 
-// Example 2: Convert an integer to a TimeSpan (seconds)
-TimeSpan time = 10.Seconds(); // Returns a TimeSpan of 10 seconds
+// Convert integer to TimeSpan (seconds)
+TimeSpan time = 10.Seconds(); // TimeSpan of 10 seconds
 
-// Example 3: Generate a range of integers
-IEnumerable<int> range = 1.RangeTo(5); // Returns [1, 2, 3, 4, 5]
+// Generate range of integers
+IEnumerable<int> range = 1.RangeTo(5); // [1, 2, 3, 4, 5]
 
-// Example 4: Get the digits of an integer
-List<int> digits = 12345.Digits(); // Returns [1, 2, 3, 4, 5]
+// Get digits of an integer
+List<int> digits = 12345.Digits(); // [1, 2, 3, 4, 5]
 ```
 
 ### NumExtension
 
-Provides extension methods for working with numbers, including clamping, rounding, and converting between degrees and radians.
+Advanced numeric operations including clamping, rounding, and unit conversions.
+
+#### Methods
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `Clamp(T, T)` | Clamp value within range | `150.Clamp(0, 100)` → `100` |
+| `RoundToDecimals(int)` | Round to decimal places | `3.14159.RoundToDecimals(2)` |
+| `AsRadians()` | Convert degrees to radians | `180.0.AsRadians()` |
+| `IsBetween(T, T)` | Check if value is between bounds | `5.0.IsBetween(2.0, 8.0)` |
 
 ```csharp
-// Example 1: Clamp a number within a specified range
-decimal value = 150;
-decimal min = 0;
-decimal max = 100;
-decimal clampedValue = value.Clamp(min, max); // Returns 100
+// Clamp number within range
+decimal clampedValue = 150m.Clamp(0m, 100m); // 100
 
-// Example 2: Round a number to a specific number of decimal places
-double roundedValue = 3.14159.RoundToDecimals(2); // Returns 3.14
+// Round to specific decimal places
+double roundedValue = 3.14159.RoundToDecimals(2); // 3.14
 
-// Example 3: Convert degrees to radians
-double radians = 180.0.AsRadians(); // Returns 3.141592653589793
+// Convert degrees to radians
+double radians = 180.0.AsRadians(); // π (3.141592653589793)
 
-// Example 4: Check if a number is between two values
-bool isBetween = 5.0.IsBetween(2.0, 8.0); // Returns true
+// Check if number is between values
+bool isBetween = 5.0.IsBetween(2.0, 8.0); // true
 ```
 
 ### StringExtensions
 
-Provides extension methods for working with strings, offering functionalities such as validation, formatting, and manipulation.
+Comprehensive string validation, formatting, and manipulation utilities.
+
+#### Methods
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `IsValidEmail()` | Validate email format | `"user@domain.com".IsValidEmail()` |
+| `Capitalize()` | Capitalize first letter | `"hello".Capitalize()` → `"Hello"` |
+| `Reverse()` | Reverse string | `"hello".Reverse()` → `"olleh"` |
+| `IsPalindrome()` | Check if palindrome | `"madam".IsPalindrome()` → `true` |
 
 ```csharp
-// Example 1: Check if a string is a valid email address
-string email = "test@example.com";
-bool isValidEmail = email.IsValidEmail(); // Returns true
+// Validate email address
+bool isValidEmail = "test@example.com".IsValidEmail(); // true
 
-// Example 2: Capitalize the first letter of a string
-string capitalizedString = "hello".Capitalize(); // Returns "Hello"
+// Capitalize first letter
+string capitalizedString = "hello".Capitalize(); // "Hello"
 
-// Example 3: Reverse a string
-string reversedString = "hello".Reverse(); // Returns "olleh"
+// Reverse string
+string reversedString = "hello".Reverse(); // "olleh"
 
-// Example 4: Check if a string is a palindrome
-bool isPalindrome = "madam".IsPalindrome(); // Returns true
+// Check if string is palindrome
+bool isPalindrome = "madam".IsPalindrome(); // true
 ```
 
 ### Web3Utils
 
-Provides utility functions for working with Web3, including address validation, Ether conversion, and PIN code generation.
+Blockchain and Web3 development utilities for Ethereum and cryptocurrency operations.
+
+#### Methods
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `IsValidEthereumAddress()` | Validate Ethereum address | `address.IsValidEthereumAddress()` |
+| `ToEther(BigInteger)` | Convert Wei to Ether | `Web3Utils.ToEther(wei)` |
+| `GeneratePin(int)` | Generate PIN code | `Web3Utils.GeneratePin(6)` |
 
 ```csharp
-// Example 1: Validate an Ethereum address
-string address = "0x12345...";
-bool isValidAddress = address.IsValidEthereumAddress(); // Returns true or false
+// Validate Ethereum address
+string address = "0x742d35Cc6634C0532925a3b8D20b2C06e0C2D446";
+bool isValidAddress = address.IsValidEthereumAddress(); // true
 
-// Example 2: Convert Wei to Ether
+// Convert Wei to Ether
 BigInteger wei = BigInteger.Parse("1000000000000000000"); // 1 Ether in Wei
-double ether = Web3Utils.ToEther(wei); // Returns 1.0
+double ether = Web3Utils.ToEther(wei); // 1.0
 
-// Example 3: Generate a random PIN code
-string pin = Web3Utils.GeneratePin(6); // Returns a 6-digit PIN code
+// Generate random PIN code
+string pin = Web3Utils.GeneratePin(6); // "123456" (random)
 ```
 
-## DbService
+### DbService
 
-Provides utility functions for working with databases, including connection validation and data export.
+Database utility functions for connection validation and data export operations.
+
+#### Methods
+
+| Method | Description | Return Type |
+|--------|-------------|-------------|
+| `IsValidConnectionString(string)` | Validate connection string | `bool` |
+| `ExportTableToCsv(string, string, string)` | Export table to CSV | `bool` |
 
 ```csharp
-// Example 1: Validate a connection string
+// Validate connection string
 string connectionString = "Data Source=localhost;Initial Catalog=MyDatabase;Integrated Security=True";
-bool isValid = DbService.IsValidConnectionString(connectionString); // Returns true or false
+bool isValid = DbService.IsValidConnectionString(connectionString);
 
-// Example 2: Export a table to a CSV file
-string tableName = "MyTable";
-string filePath = "C:\\MyTable.csv";
-bool exported = DbService.ExportTableToCsv(connectionString, tableName, filePath); // Returns true or false
+// Export table to CSV file
+string tableName = "Users";
+string filePath = @"C:\exports\users.csv";
+bool exported = DbService.ExportTableToCsv(connectionString, tableName, filePath);
 ```
 
-## Password Generation
+### Password Generation
 
-Provides utility functions for generating passwords using `PasswordBuilder` and `PasswordConfiguration`.
+Secure password generation with customizable complexity and character sets.
+
+#### PasswordBuilder Class
 
 ```csharp
-// Example 1: Generate a password with default settings
+// Generate password with default settings
 PasswordBuilder builder = new PasswordBuilder();
-string password = builder.Generate(); // Returns a password with default settings (lowercase, uppercase, numbers, symbols, length 12)
+string password = builder.Generate(); // 12-character password
 
-// Example 2: Generate a password with custom settings
-PasswordConfiguration config = new PasswordConfiguration(true, false, true, false, 16, 100); // lowercase, no uppercase, numbers, no symbols, length 16
-PasswordBuilder builder2 = new PasswordBuilder(config);
-string password2 = builder2.Generate(); // Returns a password with custom settings
+// Generate password with custom configuration
+PasswordConfiguration config = new PasswordConfiguration(
+    includeLowercase: true,
+    includeUppercase: false, 
+    includeNumbers: true,
+    includeSymbols: false,
+    length: 16,
+    maxLength: 100
+);
+PasswordBuilder customBuilder = new PasswordBuilder(config);
+string customPassword = customBuilder.Generate();
 
-// Example 3: Generate a password with custom symbols
-PasswordBuilder builder3 = new PasswordBuilder();
-builder3.WithCustomSymbols("!@#");
-string password3 = builder3.Generate(); // Returns a password with custom symbols
+// Generate password with custom symbols
+PasswordBuilder symbolBuilder = new PasswordBuilder();
+symbolBuilder.WithCustomSymbols("!@#$%");
+string symbolPassword = symbolBuilder.Generate();
 ```
 
-## Contributing
+#### PasswordConfiguration Properties
 
-We'd love for you to contribute to Utills-Nuget! Got a cool extension method idea? Found a bug? Submit a pull request and help us make Utills-Nuget even better!
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `IncludeLowercase` | `bool` | `true` | Include lowercase letters |
+| `IncludeUppercase` | `bool` | `true` | Include uppercase letters |
+| `IncludeNumbers` | `bool` | `true` | Include numeric digits |
+| `IncludeSymbols` | `bool` | `true` | Include special symbols |
+| `Length` | `int` | `12` | Password length |
+| `MaxLength` | `int` | `128` | Maximum allowed length |
 
-## License
+## Requirements
 
-This project is licensed under the [MIT License](LICENSE).
+- **.NET Standard 2.0** or higher
+- **.NET Framework 4.6.1** or higher  
+- **.NET Core 2.0** or higher
+- **.NET 5.0** or higher
+
+## Code Contributors
+
+![Plugin Banners](https://raw.githubusercontent.com/DevCodeSpace/.NetSocketHandler/refs/heads/main/assets/contributors.png)
+
+⭐ **Star this repository if Extensions helped your project!**
+
+---
+
+<div align="center">
+  <p>Made with DevCodeSpace ❤️</p>
+  <p>
+    <a href="https://github.com/yourusername/utills-nuget">GitHub Repository</a> •
+    <a href="https://github.com/yourusername/utills-nuget/issues">Report Bug</a>
+  </p>
+</div>
