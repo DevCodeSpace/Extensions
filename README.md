@@ -2,7 +2,7 @@
 
 **Extensions** is your comprehensive toolkit for .NET development, offering a rich collection of extension methods and utility functions designed to streamline your coding experience. Whether you're manipulating strings, working with dates, generating secure passwords, or handling Web3 operations, Utills-Nuget provides the tools you need to write cleaner, more efficient code.
 
-![Plugin Banners](https://raw.githubusercontent.com/DevCodeSpace/.NetSocketHandler/refs/heads/main/assets/banner.jpg)
+![Plugin Banners](https://raw.githubusercontent.com/DevCodeSpace/Extensions/refs/heads/main/assets/banner.jpg)
 
 ## ✨ Key Features
 
@@ -325,14 +325,14 @@ string symbolPassword = symbolBuilder.Generate();
 
 ## Requirements
 
-- **.NET Standard 2.0** or higher
-- **.NET Framework 4.6.1** or higher  
-- **.NET Core 2.0** or higher
-- **.NET 5.0** or higher
+◆ **.NET Standard 2.0** or higher <br>
+◆ **.NET Framework 4.6.1** or higher <br>
+◆ **.NET Core 2.0** or higher <br>
+◆ **.NET 5.0** or higher
 
 ## Code Contributors
 
-![Plugin Banners](https://raw.githubusercontent.com/DevCodeSpace/.NetSocketHandler/refs/heads/main/assets/contributors.png)
+![Plugin Banners](https://raw.githubusercontent.com/DevCodeSpace/Extensions/refs/heads/main/assets/contributors.png)
 
 ⭐ **Star this repository if Extensions helped your project!**
 
@@ -341,7 +341,7 @@ string symbolPassword = symbolBuilder.Generate();
 <div align="center">
   <p>Made with DevCodeSpace ❤️</p>
   <p>
-    <a href="https://github.com/yourusername/utills-nuget">GitHub Repository</a> •
-    <a href="https://github.com/yourusername/utills-nuget/issues">Report Bug</a>
+    <a href="https://github.com/DevCodeSpace/Extensions">GitHub Repository</a> •
+    <a href="https://github.com/DevCodeSpace/Extensions/issues">Report Bug</a>
   </p>
 </div>
