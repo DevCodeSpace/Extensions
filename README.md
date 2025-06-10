@@ -1,18 +1,18 @@
 # Extensions
 
-**Extensions** is your comprehensive toolkit for .NET development, offering a rich collection of extension methods and utility functions designed to streamline your coding experience. Whether you're manipulating strings, working with dates, generating secure passwords, or handling Web3 operations, Utills-Nuget provides the tools you need to write cleaner, more efficient code.
+**Extensions** is your comprehensive toolkit for .NET development, offering a rich collection of extension methods and extension functions designed to streamline your coding experience. Whether you're manipulating strings, working with dates, generating secure passwords, or handling Web3 operations, Extensions-Nuget provides the tools you need to write cleaner, more efficient code.
 
-![Plugin Banners](https://raw.githubusercontent.com/DevCodeSpace/Extensions/refs/heads/main/assets/banner.jpg)
+![Plugin Banners](https://raw.githubusercontent.com/DevCodeSpace/Extensions/refs/heads/main/assets/banner.png)
 
 ## ✨ Key Features
 
-◆ 🎨 **Color manipulation and conversion utilities** <br>
+◆ 🎨 **Color manipulation and conversion extensions** <br>
 ◆ 📅 **Advanced date comparison and validation** <br>
 ◆ 📁 **File operations with async support** <br>
 ◆ 🔢 **Extended integer and numeric operations** <br>
 ◆ 📝 **Comprehensive string validation and manipulation** <br>
-◆ 🌐 **Web3 utilities for blockchain development** <br>
-◆ 🗄️ **Database connection and export utilities** <br>
+◆ 🌐 **Web3 extensions for blockchain development** <br>
+◆ 🗄️ **Database connection and export extensions** <br>
 ◆ 🔐 **Secure password generation with customizable options**
 
 ## Table of Contents
@@ -26,7 +26,7 @@
   - [IntExtension](#intextension)
   - [NumExtension](#numextension)
   - [StringExtensions](#stringextensions)
-  - [Web3Utils](#web3utils)
+  - [Web3Extensions](#web3extensions)
   - [DbService](#dbservice)
   - [Password Generation](#password-generation)
 - [Requirements](#requirements)
@@ -38,25 +38,25 @@
 
 ### Package Manager Console
 ```powershell
-Install-Package Utills
+Install-Package Extensions
 ```
 
 ### .NET CLI
 ```bash
-dotnet add package Utills
+dotnet add package Extensions
 ```
 
 ### PackageReference
 ```xml
-<PackageReference Include="Utills" Version="x.x.x" />
+<PackageReference Include="Extensions" Version="x.x.x" />
 ```
 
 ## Quick Start
 
-Once installed, import the `Utills` namespace to access all extension methods and utilities:
+Once installed, import the `Extensions` namespace to access all extension methods and extensions:
 
 ```csharp
-using Utills;
+using Extensions;
 
 // Example: String validation
 string email = "user@example.com";
@@ -211,7 +211,7 @@ bool isBetween = 5.0.IsBetween(2.0, 8.0); // true
 
 ### StringExtensions
 
-Comprehensive string validation, formatting, and manipulation utilities.
+Comprehensive string validation, formatting, and manipulation extensions.
 
 #### Methods
 
@@ -236,17 +236,17 @@ string reversedString = "hello".Reverse(); // "olleh"
 bool isPalindrome = "madam".IsPalindrome(); // true
 ```
 
-### Web3Utils
+### Web3Extensions
 
-Blockchain and Web3 development utilities for Ethereum and cryptocurrency operations.
+Blockchain and Web3 development extensions for Ethereum and cryptocurrency operations.
 
 #### Methods
 
 | Method | Description | Example |
 |--------|-------------|---------|
 | `IsValidEthereumAddress()` | Validate Ethereum address | `address.IsValidEthereumAddress()` |
-| `ToEther(BigInteger)` | Convert Wei to Ether | `Web3Utils.ToEther(wei)` |
-| `GeneratePin(int)` | Generate PIN code | `Web3Utils.GeneratePin(6)` |
+| `ToEther(BigInteger)` | Convert Wei to Ether | `Web3Extensions.ToEther(wei)` |
+| `GeneratePin(int)` | Generate PIN code | `Web3Extensions.GeneratePin(6)` |
 
 ```csharp
 // Validate Ethereum address
@@ -255,15 +255,15 @@ bool isValidAddress = address.IsValidEthereumAddress(); // true
 
 // Convert Wei to Ether
 BigInteger wei = BigInteger.Parse("1000000000000000000"); // 1 Ether in Wei
-double ether = Web3Utils.ToEther(wei); // 1.0
+double ether = Web3Extensions.ToEther(wei); // 1.0
 
 // Generate random PIN code
-string pin = Web3Utils.GeneratePin(6); // "123456" (random)
+string pin = Web3Extensions.GeneratePin(6); // "123456" (random)
 ```
 
 ### DbService
 
-Database utility functions for connection validation and data export operations.
+Database extension functions for connection validation and data export operations.
 
 #### Methods
 
